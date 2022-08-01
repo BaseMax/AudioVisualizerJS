@@ -70,10 +70,7 @@ document.addEventListener('keydown', (e) => {
     if (e.keyCode === 32) startVisualizer();
 });
 
-window.addEventListener('load', () => {
-    init();
-    startVisualizer();
-});
+window.addEventListener('load', init);
 
 window.addEventListener('resize', init);
 
