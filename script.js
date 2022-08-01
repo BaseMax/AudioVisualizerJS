@@ -3,14 +3,13 @@ const elm_audio = document.querySelector('.audio');
 const elm_canvas = document.querySelector('.canvas');
 const elm_container = document.querySelector('.container');
 
-// -Variables
+// Variables
+let analyser;
 let audioSource;
 let audioContext;
-let analyser;
 
+// Const Variables
 const ctx = elm_canvas.getContext('2d');
-elm_canvas.width = window.innerWidth;
-elm_canvas.height = window.innerHeight;
 
 // Functions
 const drawVisualiser = (bufferLength, dataArray) => {
@@ -32,8 +31,9 @@ const drawVisualiser = (bufferLength, dataArray) => {
 };
 
 const startVisualizer = () => {
-    audioContext = new AudioContext();
     if (audioSource === undefined) {
+        audioContext = new AudioContext();
+
         audioSource = audioContext.createMediaElementSource(elm_audio);
         analyser = audioContext.createAnalyser();
 
@@ -57,3 +57,17 @@ const startVisualizer = () => {
 
 // Evenets
 elm_container.addEventListener('click', startVisualizer);
+
+document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 32) startVisualizer();
+});
+
+window.addEventListener('load', () => {
+    elm_canvas.width = window.innerWidth;
+    elm_canvas.height = window.innerHeight;
+});
+
+window.addEventListener('resize', () => {
+    elm_canvas.width = window.innerWidth;
+    elm_canvas.height = window.innerHeight;
+});
