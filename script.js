@@ -1,5 +1,6 @@
 // Elements
 const elm_audio = document.querySelector('.audio');
+const elm_click = document.querySelector(".click");
 const elm_canvas = document.querySelector('.canvas');
 const elm_container = document.querySelector('.container');
 
@@ -31,6 +32,7 @@ const drawVisualiser = (bufferLength, dataArray) => {
 };
 
 const startVisualizer = () => {
+    if (!elm_click.classList.contains("hidden")) elm_click.classList.add("hidden");
     if (audioSource === undefined) {
         audioContext = new AudioContext();
 
@@ -73,5 +75,7 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('load', init);
 
 window.addEventListener('resize', init);
+
+elm_click.addEventListener('click', startVisualizer);
 
 elm_container.addEventListener('click', startVisualizer);

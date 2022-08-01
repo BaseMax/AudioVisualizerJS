@@ -10,6 +10,26 @@ h1 {
     position: absolute;
     transform: translate(-50%,-50%);
 }
+.click {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: gray;
+    z-index: 999;
+    padding: 10px;
+    position: fixed;
+}
+.click.hidden {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    display: none;
+    visibility: hidden;
+}
 .container {
     top: 0;
     left: 0;
