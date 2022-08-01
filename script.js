@@ -21,7 +21,7 @@ const drawVisualiser = (bufferLength, dataArray) => {
         ctx.rotate(i * 4.0001);
 
         const hueColor = (Math.random() * 255) + i * 0.05;
-        ctx.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+        ctx.fillStyle = 'hsl(' + hueColor + ', 100%, 50%)';
         ctx.beginPath();
         ctx.arc(10, barHeight / 2, barHeight / 2, 0, Math.PI / 4);
         ctx.fill();
