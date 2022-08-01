@@ -18,6 +18,7 @@ elm_canvas.height = window.innerHeight;
 
 // Functions
 const drawVisualiser = (bufferLength, dataArray) => {
+    console.log(bufferLength, dataArray);
     for (let i = 0; i < bufferLength; i++) {
         const barHeight = dataArray[i] * 2.5;
         ctx.save();
@@ -34,8 +35,7 @@ const drawVisualiser = (bufferLength, dataArray) => {
     }
 };
 
-// Evenets
-elm_container.addEventListener('click', () => {
+const startVisualizer = () => {
     audioContext = new AudioContext();
     if (audioSource === undefined) {
         audioSource = audioContext.createMediaElementSource(elm_audio);
@@ -57,5 +57,7 @@ elm_container.addEventListener('click', () => {
         requestAnimationFrame(animate);
     };
     animate();
-});
+};
 
+// Evenets
+elm_container.addEventListener('click', startVisualizer);
